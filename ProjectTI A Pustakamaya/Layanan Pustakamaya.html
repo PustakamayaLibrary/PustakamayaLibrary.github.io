@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layanan Pustakamaya</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 50px auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: rotateY(10deg) translateY(-15px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .card .icon {
+      font-size: 50px;
+      color: #ffc107;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .card h3 {
+      font-size: 1.5em;
+      color: #0077cc;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .card:hover .icon {
+      transform: scale(1.2);
+      color: #ff9800;
+    }
+
+    .card:hover h3 {
+      color: #ff9800;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      overflow: auto;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 40px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .modal-content h2 {
+      font-size: 2em;
+      color: #0077cc;
+    }
+
+    .modal-content p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .close {
+      color: #aaa;
+      font-size: 2em;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #333;
+    }
+
+    footer {
+      background-color: #0077cc;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    /* Parallax background effect */
+    header {
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Layanan Pustakamaya</h1>
+    <p>Temukan berbagai layanan perpustakaan yang inovatif dan modern</p>
+  </header>
+
+  <div class="grid-container">
+    <div class="card" onclick="showModal('digital')">
+      <div class="icon">📚</div>
+      <h3>Layanan Koleksi Digital</h3>
+      <p>Jelajahi koleksi digital seperti e-book, audiobook, jurnal ilmiah dan dokumen referensi.</p>
+    </div>
+
+    <div class="card" onclick="showModal('opac')">
+      <div class="icon">🔍</div>
+      <h3>OPAC</h3>
+      <p>Pencarian koleksi buku dan artikel melalui katalog online dengan mudah.</p>
+    </div>
+
+    <div class="card" onclick="showModal('sirkulasi')">
+      <div class="icon">🔄</div>
+      <h3>Layanan Sirkulasi</h3>
+      <p>Peminjaman dan pengembalian buku secara digital melalui sistem otomatis yang tersedia.</p>
+    </div>
+
+    <div class="card" onclick="showModal('referensi')">
+      <div class="icon">👩‍🏫</div>
+      <h3>Layanan Interaktif</h3>
+      <p>Ruang diskusi virtual, forum, atau komunitas yang dapat dimanfaatkan pengguna untuk berdiskusi.</p>
+    </div>
+
+    <div class="card" onclick="showModal('repositori')">
+      <div class="icon">📂</div>
+      <h3>Penyimpanan Pribadi</h3>
+      <p>Simpan dan kelola bahan pustaka favorit yang akan di baca nanti serta daftar bacaan yang telah di baca.</p>
+    </div>
+
+    <div class="card" onclick="showModal('reservasi')">
+      <div class="icon">📅</div>
+      <h3>Layanan Bantuan</h3>
+      <p>Dapatkan panduan dan dukungan langsung dari pustakawan kami secara real-time.</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 | Perpustakaan Pustakamaya — Library For Empowering Communities Through Literacy
+  </footer>
+
+  <script>
+    const layanan = {
+      digital: {
+        title: "Layanan Koleksi Digital",
+        text: "Koleksi digital seperti e-book yang tersedia dalam format PDF, EPUB atau format lain yang dapat diunduh dan dibaca langsung di perangkat. Audiobook berupa buku yang disajikan dalam format audio. Jurnal dan artikel ilmiah berupa akses ke jurnal akademik, artikel ilmiah, dan penelitian dari berbagai bidang ilmu. Dokumen referensi berupa buku teks, kamus, ensiklopedia."
+      },
+      opac: {
+        title: "OPAC",
+        text: "Online Public Access Catalog memungkinkan pengguna mencari koleksi perpustakaan secara daring dan mandiri, termasuk status ketersediaan dan lokasi koleksi."
+      },
+      sirkulasi: {
+        title: "Layanan Sirkulasi",
+        text: "Fasilitas peminjaman, pengembalian, dan pengelolaan koleksi buku dengan sistem terintegrasi, termasuk pemantauan histori pinjam dan perpanjangan online."
+      },
+      referensi: {
+        title: "Layanan Interaktif",
+        text: "Ruang diskusi virtual, forum, atau komunitas bagi pengguna untuk berdiskusi, berbagi pengetahuan, atau bertanya jawab terkait topik-topik tertentu. Hal ini dapat berupa forum online atau ruang obrolan langsung."
+      },
+      repositori: {
+        title: "Penyimpanan Pribadi",
+        text: "Layanan ini memungkinkan pengguna untuk menyimpan buku atau bahan pustaka lain yang akan dibaca nanti, serta membuat daftar bacaan atau koleksi pribadi yang mudah diakses kembali di lain waktu."
+      },
+      reservasi: {
+        title: "Layanan Bantusn",
+        text: "Layanan panduan pengguna, atau layanan bantuan (helpdesk) untuk memandu pengguna dalam menggunakan platform, termasuk cara mencari koleksi atau mengakses fitur-fitur khusus."
+      }
+    };
+
+    function showModal(key) {
+      document.getElementById('modalTitle').innerText = layanan[key].title;
+      document.getElementById('modalText').innerText = layanan[key].text;
+      document.getElementById('modal').style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
