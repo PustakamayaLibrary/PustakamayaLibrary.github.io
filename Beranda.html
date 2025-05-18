@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beranda</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .banner-section {
+    position: relative;
+    margin: 10px auto;
+    width: 90%;
+    max-width: 1000px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+
+  .banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    z-index: 0;
+  }
+
+  .banner-slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+  }
+
+  .banner-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 90%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  
+  .info-summary {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      background: #81c8fb;
+      box-shadow: 0 2px 12px rgba(0,74,153,0.2);
+      text-align: center;
+    }
+
+    footer {
+      margin-top: auto;
+      background: #004a99;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    @media (max-width: 700px) {
+      .info-summary {
+        font-size: 1rem;
+      }
+    }
+</style>
+</head>
+<body>
+
+<section class="banner-section" aria-label="Banner">
+  <div class="banner-slide active">
+    <img src="Banner 1..jpeg" alt="Selamat Datang di Pustakamaya" />
+    <div class="banner-caption">Selamat Datang di PUSTAKAMAYA</div>
+  </div>
+  <div class="banner-slide">
+    <img src="Banner 2..jpeg" alt="Pustakamaya: Rumah informasi dan Pengetahuan untuk Masyarakat" />
+    <div class="banner-caption">Pustakamaya: Rumah informasi dan Pengetahuan untuk Masyarakat</div>
+  </div>
+  <div class="banner-slide">
+    <img src="Banner 3..jpeg" alt="Akses koleksi digital kapanpun dan dimanapun" />
+    <div class="banner-caption">Akses koleksi digital kapanpun dan dimanapun</div>
+  </div>
+  <div class="banner-slide">
+    <img src="Banner 4..jpeg" alt="Segera hadir: Bazar Buku 31 mei 2025" />
+    <div class="banner-caption">Segera hadir: Bazar Buku 31 Mei 2025</div>
+  </div>
+  <div class="banner-slide">
+    <img src="Banner 5..jpeg" alt="Bersama Pustakamaya: Membangun literasi" />
+    <div class="banner-caption">Bersama Pustakamaya: Membangun literasi</div>
+  </div>
+</section>
+
+<section class="info-summary" aria-label="Informasi Penting"><h1>Informasi Penting Pustakamaya</h1>
+    <p align="justify"><font size="4"><font color="white">Selamat datang di PUSTAKAMAYA, web perpustakaan digital dengan akses terbuka untuk pengguna umum yang diharapkan dapat memudahkan masyarakat dalam mengakses koleksi dan memberikan layanan informasi seluas luasnya secara online. PUSTAKAMAYA hadir untuk meningkatkan pemerataan pembangunan di daerah yang sulit dijangkau guna memperkenalkan perpustakaan digital kepada masyarakat, memberikan kesempatan dan semangat belajar kepada masyarakat, membangun literasi masyarakat dengan menciptakan inovasi baru.  Semoga, dengan adanya perpustakaan digital ini dapat meningkatkan literasi masyarakat, kualitas sumber daya manusia, minat baca, dan kemampuan berpikir kritis  agar masyarakat memperoleh pengetahuan dan keterampilan yang berguna.</font></p>
+  </section>
+
+<script>
+  const slides = document.querySelectorAll('.banner-slide');
+  let currentIndex = 0;
+  const slideInterval = 4000; // 4 detik per slide
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  setInterval(nextSlide, slideInterval);
+</script>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kegiatan Pustakamaya</title>
+  <style>
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 280px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card-image {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      overflow: hidden;
+    }
+
+    .card-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .card-title h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 22px;
+	  color: #ffffff
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card-title">
+    <h1>Kegiatan Pustakamaya</h1>
+  </div>
+
+  <section class="card-container">
+    <div class="card">
+      <div class="card-image">
+        <img src="Banner Kegiatan1.jpeg" alt="Layar Literasi">
+      </div>
+      <div class="card-content">
+        <h3>Layar Literasi</h3>
+        <p>"Layar Literasi" adalah program rutin setiap Kamis untuk meningkatkan kemampuan literasi digital masyarakat dengan baca bersama, diskusi buku, dan tutorial koleksi digital.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <img src="Banner Kegiatan2.jpeg" alt="Jejak Kata">
+      </div>
+      <div class="card-content">
+        <h3>Jejak Kata</h3>
+        <p>"Jejak Kata" adalah pelatihan menulis dan resensi buku setiap Senin. Peserta diajak menulis kreatif dan karyanya bisa ditampilkan di portal digital perpustakaan.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <img src="Banner Kegiatan3.jpeg" alt="Cerita Sabtu Sore">
+      </div>
+      <div class="card-content">
+        <h3>Cerita Sabtu Sore</h3>
+        <p>Program storytelling virtual setiap Sabtu sore yang menyajikan dongeng dan cerita rakyat dari nusantara secara interaktif dan edukatif.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-image">
+        <img src="Banner Kegiatan4.jpeg" alt="Digital Compass">
+      </div>
+      <div class="card-content">
+        <h3>Digital Compass</h3>
+        <p>Setiap Rabu, kegiatan edukasi digital untuk mengeksplorasi e-book, artikel, video, dan sumber pustaka sebagai panduan hidup modern.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+
+<h1>Berita Pustakamaya</h1>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 20px;
+  }
+  .news-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .news-item {
+    background-color: #0056b3; /* biru tua */
+    color: white;
+    width: 23%;
+    min-width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  .news-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .news-content {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  .news-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .news-date {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  @media (max-width: 1024px) {
+    .news-item {
+      width: 48%;
+    }
+  }
+  @media (max-width: 600px) {
+    .news-item {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="news-container">
+
+  <div class="news-item">
+    <img src="berita1.jpeg" alt="Berita 1" />
+	<div class="grid-container">
+  <div class="grid-item">Berita 1</div>
+</div>
+
+    <div class="news-content">
+      <div class="news-title">Sambutan Wali Kota dalam acara peresmian Pustakamaya</div>
+      <div class="news-date">Senin, 5 Mei 2025</div>
+    </div>
+  </div>
+
+  <div class="news-item">
+    <img src="berita 2.jpeg" alt="Berita 2" />
+	<div class="grid-container">
+  <div class="grid-item">Berita 2</div>
+</div>
+
+    <div class="news-content">
+      <div class="news-title">Pengenalan fitur-fitur yang ada di Pustakamaya oleh pustakawan</div>
+      <div class="news-date">Selasa, 6 Mei 2025</div>
+    </div>
+  </div>
+
+  <div class="news-item">
+	<img src="berita 3.jpeg" alt="Berita 3" />
+	<div class="grid-container">
+  <div class="grid-item">Berita 3</div>
+</div>
+    <div class="news-content">
+      <div class="news-title">Rapat koordinasi program kerja di pustakamaya</div>
+      <div class="news-date">Senin, 9 Mei 2025</div>
+    </div>
+  </div>
+
+  <div class="news-item">
+    <img src="berita 4.jpeg" alt="Berita 4" />
+	<div class="grid-container">
+  <div class="grid-item">Berita 4</div>
+</div>
+    <div class="news-content">
+      <div class="news-title">Pendayagunaan fasilitas Pustakamaya</div>
+      <div class="news-date">Senin, 19 Mei 2025</div>
+    </div>
+  </div>
+  
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agenda & Pengumuman Pustakamaya</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3a5f, #3b5998);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e3a5f;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 5px;
+    }
+
+    .announcement {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-left: 4px solid #2980b9;
+      background-color: #f0f7fc;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .announcement:hover {
+      background-color: #e6f0fa;
+    }
+
+    .date-box {
+      min-width: 60px;
+      background-color: #2980b9;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px 4px;
+      border-radius: 6px;
+      margin-right: 10px;
+      font-size: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .announcement-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #2c3e50;
+      text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Agenda & Pengumuman Pustakamaya</h1>
+
+  <div class="container">
+    <!-- Kolom Agenda -->
+    <div class="column">
+      <div class="section-title">Agenda Pustakamaya</div>
+
+      <div class="announcement">
+        <div class="date-box">31 Mei</div>
+        <div class="announcement-text">Bazar Buku Digital</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">1 Juni</div>
+        <div class="announcement-text">Workshop “Aksara Kita”</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">3 Juni</div>
+        <div class="announcement-text">Sosialisasi “Membangun Literasi lewat Pustakamaya”.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">7 Juni</div>
+        <div class="announcement-text">Pelatihan “Kenal Pustaka Digital”</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">12 Juni</div>
+        <div class="announcement-text">Webinar dan Kelas Virtual Literasi Informasi</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">18 Juni</div>
+        <div class="announcement-text">Pelatihan Literasi Digital “Cerdas Digital”</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">24–30 Juni</div>
+        <div class="announcement-text">Lomba Resensi Buku Virtual “Ulas Karya”</div>
+      </div>
+    </div>
+
+    <!-- Kolom Pengumuman -->
+    <div class="column">
+      <div class="section-title">Pengumuman Pustakamaya</div>
+
+      <div class="announcement">
+        <div class="date-box">5 Mei</div>
+        <div class="announcement-text">Perpustakaan digital Pustakamaya resmi hadir di daerah Semarang.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">5 Mei</div>
+        <div class="announcement-text">Bisa baca tanpa internet dan baca offline di rumah.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">8 Mei</div>
+        <div class="announcement-text">Pelatihan Literasi Digital di Semarang menggunakan aplikasi Pustakamaya.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">15 Mei</div>
+        <div class="announcement-text">Akses literasi gratis melalui perpustakaan digital Pustakamaya.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">25 Mei</div>
+        <div class="announcement-text">Kisah sukses Pak Adi belajar menulis lewat e-book Pustakamaya.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">26 Mei</div>
+        <div class="announcement-text">Event video kreatif dibuka untuk umum.</div>
+      </div>
+
+      <div class="announcement">
+        <div class="date-box">30 Mei</div>
+        <div class="announcement-text">Pustakawan muda dibutuhkan untuk literasi digital di Semarang.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+</html>
